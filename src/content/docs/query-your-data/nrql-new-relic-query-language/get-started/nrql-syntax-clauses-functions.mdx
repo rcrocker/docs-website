@@ -2631,6 +2631,18 @@ Note: `aparse()` is case-insensitive.
         </Collapser>
 
         <Collapser
+          id="histogram-start"
+          title="Using a start value to better see higher quantiles"
+        >
+          `histogram()` accepts a starting value to provide insight into higher quantiles. This query uses a starting value of 5 to
+          show the 20 buckets for response times in the 5 to 10 second range. As above. response time values greater than `width` are counted in the final bucket.
+
+          ```sql
+          SELECT histogram(myDistributionMetric, 10, 20, 5) FROM Metric SINCE 1 week ago
+          ```
+        </Collapser>
+
+        <Collapser
           id="histogram-prometheus"
           title="Prometheus histogram buckets"
         >
