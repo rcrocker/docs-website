@@ -320,7 +320,7 @@ As noted in our [basic NRQL syntax doc](/docs/query-your-data/nrql-new-relic-que
 
     <CollapserGroup>
       <Collapser
-        id="faceted-query"
+        id="faceted-query"/
         title={<>Faceted query using <InlineCode>count()</InlineCode></>}
       >
         This query shows cities with the highest pageview counts. This query uses the total number of pageviews per city to determine how facets are picked and ordered.
@@ -343,7 +343,7 @@ As noted in our [basic NRQL syntax doc](/docs/query-your-data/nrql-new-relic-que
 
       <Collapser
         id="cohort-analysis"
-        title="Grouping results across time"
+        /"Grouping results across time"
       >
         [Advanced segmentation](/docs/insights/new-relic-insights/features/advanced-segmentation) and [cohort analysis](/docs/insights/new-relic-insights/features/cohort-analysis-grouping-results-across-time) allow you to facet on bucket functions to more effectively break out your data.
 
@@ -355,7 +355,7 @@ As noted in our [basic NRQL syntax doc](/docs/query-your-data/nrql-new-relic-que
   <Collapser
     className="freq-link"
     id="facet-as"
-    title={<><InlineCode>FACET ... AS</InlineCode> clause</>}
+    /<><InlineCode>FACET ... AS</InlineCode> clause</>}
   >
     Use `FACET ... AS` to name facets using the `AS` keyword in queries. This clause is helpful for adding clearer or simplified names for facets in your results. It can also be used to rename facets in [nested aggregation](/docs/query-your-data/nrql-new-relic-query-language/nrql-query-tutorials/nested-aggregation-make-ordered-computations-single-query) queries.
 
@@ -2609,13 +2609,14 @@ Note: `aparse()` is case-insensitive.
   <Collapser
     className="freq-link"
     id="func-histogram"
-    title={<InlineCode>histogram(attribute, ceiling [,number of buckets])</InlineCode>}
+    title={<InlineCode>histogram(attribute, [ceiling [,number of buckets [, start]]])</InlineCode>}
   >
-    Use the `histogram()` function to generate histograms. It takes three arguments:
+    Use the `histogram()` function to generate histograms. It takes up to four arguments:
 
-    * Attribute name
-    * Maximum value of the sample range
-    * Total number of buckets (between 1 and 500, inclusive)
+    * Attribute name (required)
+    * Maximum value of the sample range (`width`, default value: 10.0). Attribute values that exceed the maximum value will be included in the last bucket.
+    * Total number of buckets (`buckets`, between 1 and 500, inclusive, default value: 40).
+    * Starting value for the histogram (`start`, default value: 0). Attribute values below the starting value are not included in the histogram.
 
       <CollapserGroup>
         <Collapser
